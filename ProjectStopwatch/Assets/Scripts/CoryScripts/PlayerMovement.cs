@@ -7,6 +7,7 @@ public class PlayerMovement : MonoBehaviour
 {
     private Rigidbody2D rb;
     private BoxCollider2D coll;
+    public bool facingRight;
 
     [SerializeField] private LayerMask jumpableGround;
 
@@ -32,12 +33,24 @@ public class PlayerMovement : MonoBehaviour
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
         }
 
-       
+        FlipPlayer();
+
+
+
     }
 
     private bool IsGrounded()
     {
         return Physics2D.BoxCast(coll.bounds.center, coll.bounds.size, 0f, Vector2.down, .1f, jumpableGround);
+    }
+
+    void FlipPlayer()
+    {
+        if ((dirX < 0 && facingRight) || (dirX > 0 && !facingRight))
+        {
+            facingRight = !facingRight;
+            transform.Rotate(new Vector3(0, 180, 0));
+        }
     }
 
 
