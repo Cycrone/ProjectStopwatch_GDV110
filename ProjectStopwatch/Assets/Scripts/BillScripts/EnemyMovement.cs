@@ -4,15 +4,30 @@ using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
 {
+    private Rigidbody2D enemyRigidBody2D;
+
+    //Enemy movement declarations
+    #region Enemy Movement Declarations
     [SerializeField] private float moveSpeed = 7f;
     [SerializeField] private float moveDistance = 5f;
 
-    private Rigidbody2D enemyRigidBody2D;
+    
     private float startPos;
     private float endPos;
 
     public bool facingRight;
     public bool movingRight;
+    #endregion
+
+    //Enemy shootingn declarations
+    #region Enemy Shooting declarations
+    [SerializeField]
+    GameObject enemyBullet;
+
+    float fireRate;
+    float nextFire;
+
+    #endregion
 
     public enemyState States;
 
@@ -29,6 +44,15 @@ public class EnemyMovement : MonoBehaviour
         //transform.Rotate = new Vector3(0, 180, 0);
     }
 
+    void TimeToFire()
+    {
+        if (Time.time > nextFire)
+        {
+            Instantiate(enemyBullet, transform.position, Quaternion.identity);
+            nextFire = Time.time + fireRate;
+        }
+    }
+
     // Use this for initialization
     public void Awake()
     {
@@ -42,15 +66,19 @@ public class EnemyMovement : MonoBehaviour
     public void Start()
     {
         States = enemyState.Patrolling;
+        fireRate = 2f;
+        nextFire = Time.time;
     }
 
     // Update is called once per frame
     public void Update()
     {
+
         switch (States)
         {
             //Enemy ai state Patrolling ----------------------
             case enemyState.Patrolling:
+                
                 if (movingRight)
                 {
                 enemyRigidBody2D.AddForce(Vector2.right * moveSpeed * Time.deltaTime);
@@ -69,11 +97,13 @@ public class EnemyMovement : MonoBehaviour
                 }
                 if (enemyRigidBody2D.position.x <= startPos)
                     movingRight = true;
+
+
                 break;
 
             //Enemy ai state Shooting----------------------
             case enemyState.Shooting:
-                
+                TimeToFire();
 
                 
                 break;
@@ -82,7 +112,7 @@ public class EnemyMovement : MonoBehaviour
             default:
                 break;
         }
-        
+
     }
 
 }
