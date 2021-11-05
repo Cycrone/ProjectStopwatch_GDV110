@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyMovement : MonoBehaviour
 {
     [SerializeField] private float moveSpeed = 7f;
-    [SerializeField] private int moveDistance = 5;
+    [SerializeField] private float moveDistance = 5f;
 
     private Rigidbody2D enemyRigidBody2D;
     private float startPos;
@@ -14,14 +14,12 @@ public class EnemyMovement : MonoBehaviour
     public bool facingRight;
     public bool movingRight;
 
+    public enemyState States;
 
-    // Use this for initialization
-    public void Awake()
+    public enum enemyState
     {
-        enemyRigidBody2D = GetComponent<Rigidbody2D>();
-        startPos = transform.position.x;
-        endPos = startPos + moveDistance;
-        facingRight = transform.localScale.x > 0;
+        Patrolling,
+        Shooting
     }
 
     public void Flip()
@@ -31,27 +29,60 @@ public class EnemyMovement : MonoBehaviour
         //transform.Rotate = new Vector3(0, 180, 0);
     }
 
+    // Use this for initialization
+    public void Awake()
+    {
+        enemyRigidBody2D = GetComponent<Rigidbody2D>();
+        startPos = transform.position.x;
+        endPos = startPos + moveDistance;
+        facingRight = transform.localScale.x > 0;
+
+    }
+
+    public void Start()
+    {
+        States = enemyState.Patrolling;
+    }
+
     // Update is called once per frame
     public void Update()
     {
-        if (movingRight)
+        switch (States)
         {
-            enemyRigidBody2D.AddForce(Vector2.right * moveSpeed * Time.deltaTime);
-            if (!facingRight)
-                Flip();
-        }
+            //Enemy ai state Patrolling ----------------------
+            case enemyState.Patrolling:
+                if (movingRight)
+                {
+                enemyRigidBody2D.AddForce(Vector2.right * moveSpeed * Time.deltaTime);
+                if (!facingRight)
+                    Flip();
+                }
 
-        if (enemyRigidBody2D.position.x >= endPos)
-            movingRight = false;
+                if (enemyRigidBody2D.position.x >= endPos)
+                    movingRight = false;
 
-        if (!movingRight)
-        {
-            enemyRigidBody2D.AddForce(-Vector2.right * moveSpeed * Time.deltaTime);
-            if (facingRight)
-                Flip();
+                if (!movingRight)
+                {
+                    enemyRigidBody2D.AddForce(-Vector2.right * moveSpeed * Time.deltaTime);
+                    if (facingRight)
+                        Flip();
+                }
+                if (enemyRigidBody2D.position.x <= startPos)
+                    movingRight = true;
+                break;
+
+            //Enemy ai state Shooting----------------------
+            case enemyState.Shooting:
+                
+
+                
+                break;
+
+
+            default:
+                break;
         }
-        if (enemyRigidBody2D.position.x <= startPos)
-            movingRight = true;
+        
     }
 
 }
