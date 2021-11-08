@@ -4,5 +4,11 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/MainMenu.unity
+    guid: bccea453c35773744aea7e2eacffcc4c
+  - enabled: 1
+    path: Assets/Scenes/CoryTestScene.unity
+    guid: 41942ba6ed72bed4e886745e8ba1e5ba
   m_configObjects: {}
