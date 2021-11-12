@@ -97,7 +97,6 @@ public class Tutorial_GrapplingGun : MonoBehaviour
             RotateGun(mousePos, true);
         }
     }
-
     void RotateGun(Vector3 lookPoint, bool allowRotationOverTime)
     {
         Vector3 distanceVector = lookPoint - gunPivot.position;
