@@ -24,7 +24,23 @@ public class EnemyMovement : MonoBehaviour
 
     public bool facingRight;
     public bool movingRight;
-    
+
+    #region Bullet
+    [SerializeField]
+    GameObject enemyBullet;
+
+    float fireRate;
+    float nextFire;
+    #endregion
+
+    void TimeToFire()
+    {
+        if (Time.time > nextFire)
+        {
+            Instantiate(enemyBullet, transform.position, Quaternion.identity);
+            nextFire = Time.time + fireRate;
+        }
+    }
 
     public enum enemyState
     {
@@ -97,8 +113,8 @@ public class EnemyMovement : MonoBehaviour
 
     public void Patrolling()
     {
-        GameObject EnemyGun = GameObject.Find("EnemyGun");
-        EnemyGun.GetComponent<EnemyGun>().enabled = false;
+        //GameObject EnemyGun = GameObject.Find("EnemyGun");
+        //EnemyGun.GetComponent<EnemyGun>().enabled = false;
 
         if (movingRight)
         {
@@ -122,8 +138,9 @@ public class EnemyMovement : MonoBehaviour
 
     public void Shooting()
     {
-        GameObject EnemyGun = GameObject.Find("EnemyGun");
-        EnemyGun.GetComponent<EnemyGun>().enabled = true;
+        //GameObject EnemyGun = GameObject.Find("EnemyGun");
+        //EnemyGun.GetComponent<EnemyGun>().enabled = true;
+        TimeToFire();
     }
 
     // Use this for initialization
@@ -138,77 +155,30 @@ public class EnemyMovement : MonoBehaviour
 
     public void Start()
     {
-        States = enemyState.Patrolling;
+        //States = enemyState.Patrolling;
 
-        GameObject EnemyGun = GameObject.Find("EnemyGun");
-        EnemyGun.GetComponent<EnemyGun>().enabled = false;
+        //GameObject EnemyGun = GameObject.Find("EnemyGun");
+        //EnemyGun.GetComponent<EnemyGun>().enabled = false;
+
+        fireRate = 1.2f;
+        nextFire = Time.time;
+
     }
 
     // Update is called once per frame
     public void Update()
     {
-        float distToPlayer = Vector2.Distance(transform.position, Player.position);
+        //float distToPlayer = Vector2.Distance(transform.position, Player.position);
 
         if (!CanSeePlayer(detectionRange))
         {
             Patrolling();
+
         }
         else if (CanSeePlayer(detectionRange))
         {
             Shooting();
-        }
-
-        /*switch (States)
-        {
-            
-            //Enemy ai state Patrolling ----------------------
-            case enemyState.Patrolling:
-                if (!CanSeePlayer(detectionRange))
-                {
-                    if (movingRight)
-                    {
-                        enemyRigidBody2D.AddForce(Vector2.right * moveSpeed * Time.deltaTime);
-                        if (!facingRight)
-                            Flip();
-                    }
-
-                    if (enemyRigidBody2D.position.x >= endPos)
-                        movingRight = false;
-
-                    if (!movingRight)
-                    {
-                        enemyRigidBody2D.AddForce(-Vector2.right * moveSpeed * Time.deltaTime);
-                        if (facingRight)
-                            Flip();
-                    }
-                    if (enemyRigidBody2D.position.x <= startPos)
-                        movingRight = true;
-                }
-                else
-                {
-                    States = enemyState.Shooting;
-                }
-
-                break;
-
-            //Enemy ai state Shooting----------------------
-            case enemyState.Shooting:
-                if (CanSeePlayer(detectionRange))
-                {
-                    GameObject EnemyGun = GameObject.Find("EnemyGun");
-                    EnemyGun.GetComponent<EnemyGun>().enabled = true;
-                }
-                else
-                {
-                    States = enemyState.Patrolling;
-                }
-
-                break;
-
-
-            default:
-                break;
-        }*/
+        }   
 
     }
 

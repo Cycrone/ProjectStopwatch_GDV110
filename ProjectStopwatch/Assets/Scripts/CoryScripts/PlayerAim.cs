@@ -1,11 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using CodeMonkey.Utils;
 using System;
 
 public class PlayerAim : MonoBehaviour
 {
+    [SerializeField] private LayerMask mouseCollider = new LayerMask();
     public event EventHandler<OnShootEventArgs>OnShoot;
     private Transform aimTransform;
     private Transform aimGunEnd;
@@ -14,6 +14,18 @@ public class PlayerAim : MonoBehaviour
     {
         public Vector3 gunEndPoint;
         public Vector3 shootPosition;
+    }
+    private Vector3 GetMouseWorldPosition()
+    {
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        if (Physics.Raycast(ray, out RaycastHit raycastHit, 999f, mouseCollider))
+        {
+            return raycastHit.point;
+        }
+        else
+        {
+            return Vector3.zero;
+        }
     }
 
     private void Awake()
@@ -29,7 +41,7 @@ public class PlayerAim : MonoBehaviour
 
     private void PlayerAiming()
     {
-        Vector3 mousePosition = UtilsClass.GetMouseWorldPosition();
+        Vector3 mousePosition = GetMouseWorldPosition();
 
         Vector3 aimDirection = (mousePosition - transform.position).normalized;
         float angle = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg;

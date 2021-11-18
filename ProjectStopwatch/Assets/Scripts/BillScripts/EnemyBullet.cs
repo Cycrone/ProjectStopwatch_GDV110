@@ -17,7 +17,7 @@ public class EnemyBullet : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        target = GameObject.FindObjectOfType<PlayerMovement>();
+        target = GameObject.FindObjectOfType<PlayerMovement>(); 
         moveDirection = (target.transform.position - transform.position).normalized * speed;
         rb.velocity = new Vector2(moveDirection.x, moveDirection.y);
         Destroy(gameObject, 3f);
@@ -26,6 +26,11 @@ public class EnemyBullet : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.name.Equals ("Player"))
+        {
+            Debug.Log("hit");
+            Destroy(gameObject);
+        }
+        else if (collision.gameObject.name.Equals("Player"))
         {
             Debug.Log("hit");
             Destroy(gameObject);
