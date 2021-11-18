@@ -38,6 +38,7 @@ public class PauseMenu : MonoBehaviour
     public void Restart()
     {
         SceneManager.LoadScene(_newGameLevel);
+        Paused = false;
     }
 
     void Pause()
@@ -51,6 +52,7 @@ public class PauseMenu : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
         Time.timeScale = 1f;
+        Paused = false;
     }
 
     public void QuitGame()
