@@ -24,7 +24,23 @@ public class EnemyMovement : MonoBehaviour
 
     public bool facingRight;
     public bool movingRight;
-    
+
+    #region Bullet
+    [SerializeField]
+    GameObject enemyBullet;
+
+    float fireRate;
+    float nextFire;
+    #endregion
+
+    void TimeToFire()
+    {
+        if (Time.time > nextFire)
+        {
+            Instantiate(enemyBullet, transform.position, Quaternion.identity);
+            nextFire = Time.time + fireRate;
+        }
+    }
 
     public enum enemyState
     {
@@ -97,8 +113,8 @@ public class EnemyMovement : MonoBehaviour
 
     public void Patrolling()
     {
-        GameObject EnemyGun = GameObject.Find("EnemyGun");
-        EnemyGun.GetComponent<EnemyGun>().enabled = false;
+        //GameObject EnemyGun = GameObject.Find("EnemyGun");
+        //EnemyGun.GetComponent<EnemyGun>().enabled = false;
 
         if (movingRight)
         {
@@ -122,8 +138,9 @@ public class EnemyMovement : MonoBehaviour
 
     public void Shooting()
     {
-        GameObject EnemyGun = GameObject.Find("EnemyGun");
-        EnemyGun.GetComponent<EnemyGun>().enabled = true;
+        //GameObject EnemyGun = GameObject.Find("EnemyGun");
+        //EnemyGun.GetComponent<EnemyGun>().enabled = true;
+        TimeToFire();
     }
 
     // Use this for initialization
@@ -140,9 +157,12 @@ public class EnemyMovement : MonoBehaviour
     {
         //States = enemyState.Patrolling;
 
-        GameObject EnemyGun = GameObject.Find("EnemyGun");
-        EnemyGun.GetComponent<EnemyGun>().enabled = false;
-        
+        //GameObject EnemyGun = GameObject.Find("EnemyGun");
+        //EnemyGun.GetComponent<EnemyGun>().enabled = false;
+
+        fireRate = 1.2f;
+        nextFire = Time.time;
+
     }
 
     // Update is called once per frame
@@ -158,9 +178,7 @@ public class EnemyMovement : MonoBehaviour
         else if (CanSeePlayer(detectionRange))
         {
             Shooting();
-        }
-
-   
+        }   
 
     }
 
