@@ -137,7 +137,7 @@ MonoBehaviour:
   Player: {fileID: 4841642116306480993}
   castPoint: {fileID: 4841642115113486565}
   facingRight: 0
-  movingRight: 0
+  movingRight: 1
   enemyBullet: {fileID: 4940073944981952410, guid: 32ac8361808bfde4798e2c71d4dff405,
     type: 3}
 --- !u!50 &8342056235673735865
