@@ -71,7 +71,7 @@ public class EnemyMovement : MonoBehaviour
         RaycastHit2D hit = Physics2D.Linecast(castPoint.position, endPos, 1 << LayerMask.NameToLayer("Shootable"));      //*(start, end, what it look for) (LAYER Shootable----!!!!!!)
         RaycastHit2D hit2 = Physics2D.Linecast(castPoint.position, endPosBetween, 1 << LayerMask.NameToLayer("Shootable"));
         RaycastHit2D hit3 = Physics2D.Linecast(castPoint.position, endPosTop, 1 << LayerMask.NameToLayer("Shootable"));
-
+        
         if (hit.collider != null)
         {
             if (hit.collider.gameObject.CompareTag("Player"))
@@ -178,7 +178,7 @@ public class EnemyMovement : MonoBehaviour
         else if (CanSeePlayer(detectionRange))
         {
             Shooting();
-        }
+        }   
 
     }
 
