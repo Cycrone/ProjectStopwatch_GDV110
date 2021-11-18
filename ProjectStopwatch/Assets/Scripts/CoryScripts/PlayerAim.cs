@@ -36,7 +36,10 @@ public class PlayerAim : MonoBehaviour
 
     private void Update()
     {
-        PlayerAiming();
+        if (PauseMenu.Paused == false)
+        {
+            PlayerAiming();
+        }
     }
 
     private void PlayerAiming()
