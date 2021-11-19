@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Tutorial_GrapplingGun : MonoBehaviour
 {
+    [SerializeField] private LayerMask mouseCollider = new LayerMask();
     [Header("Scripts Ref:")]
     public Tutorial_GrapplingRope grappleRope;
 
@@ -57,6 +58,19 @@ public class Tutorial_GrapplingGun : MonoBehaviour
 
     }
 
+    private Vector3 GetMouseWorldPosition()
+    {
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        if (Physics.Raycast(ray, out RaycastHit raycastHit, 999f, mouseCollider))
+        {
+            return raycastHit.point;
+        }
+        else
+        {
+            return Vector3.zero;
+        }
+    }
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Mouse0))
@@ -71,8 +85,8 @@ public class Tutorial_GrapplingGun : MonoBehaviour
             }
             else
             {
-                Vector2 mousePos = m_camera.ScreenToWorldPoint(Input.mousePosition);
-                RotateGun(mousePos, true);
+                GetMouseWorldPosition();
+                RotateGun(GetMouseWorldPosition(), true);
             }
 
             if (launchToPoint && grappleRope.isGrappling)
@@ -93,8 +107,7 @@ public class Tutorial_GrapplingGun : MonoBehaviour
         }
         else
         {
-            Vector2 mousePos = m_camera.ScreenToWorldPoint(Input.mousePosition);
-            RotateGun(mousePos, true);
+            RotateGun(GetMouseWorldPosition(), true);
         }
     }
     void RotateGun(Vector3 lookPoint, bool allowRotationOverTime)
@@ -114,13 +127,13 @@ public class Tutorial_GrapplingGun : MonoBehaviour
 
     void SetGrapplePoint()
     {
-        Vector2 distanceVector = m_camera.ScreenToWorldPoint(Input.mousePosition) - gunPivot.position;
-        if (Physics2D.Raycast(firePoint.position, distanceVector.normalized))
+       
+        if (Physics2D.Raycast(firePoint.position, GetMouseWorldPosition()))
         {
-            RaycastHit2D _hit = Physics2D.Raycast(firePoint.position, distanceVector.normalized);
+            RaycastHit2D _hit = Physics2D.Raycast(firePoint.position, GetMouseWorldPosition());
             if (_hit.transform.gameObject.layer == grappableLayerNumber || grappleToAll)
             {
-                if (Vector2.Distance(_hit.point, firePoint.position) <= maxDistnace || !hasMaxDistance)
+                if (Vector3.Distance(_hit.point, firePoint.position) <= maxDistnace || !hasMaxDistance)
                 {
                     grapplePoint = _hit.point;
                     grappleDistanceVector = grapplePoint - (Vector2)gunPivot.position;
@@ -156,9 +169,9 @@ public class Tutorial_GrapplingGun : MonoBehaviour
                 case LaunchType.Physics_Launch:
                     m_springJoint2D.connectedAnchor = grapplePoint;
 
-                    Vector2 distanceVector = firePoint.position - gunHolder.position;
+                    //Vector2 distanceVector = firePoint.position - gunHolder.position;
 
-                    m_springJoint2D.distance = distanceVector.magnitude;
+                    m_springJoint2D.distance = GetMouseWorldPosition().magnitude;
                     m_springJoint2D.frequency = launchSpeed;
                     m_springJoint2D.enabled = true;
                     break;

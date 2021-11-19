@@ -7,7 +7,8 @@ public class EnemyBullet : MonoBehaviour
     [SerializeField] 
     public float speed = 15f;
     public Rigidbody2D rb;
-
+    int damage = 40;
+    
     PlayerMovement target;
 
     Vector2 moveDirection;
@@ -25,14 +26,10 @@ public class EnemyBullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        target = collision.GetComponent<PlayerMovement>();
         if (collision.gameObject.name.Equals ("Player"))
         {
-            Debug.Log("hit");
-            Destroy(gameObject);
-        }
-        else if (collision.gameObject.name.Equals("Player"))
-        {
-            Debug.Log("hit");
+            target.TakeDamage(damage);
             Destroy(gameObject);
         }
     }

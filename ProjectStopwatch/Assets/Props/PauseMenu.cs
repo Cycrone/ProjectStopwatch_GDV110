@@ -8,10 +8,12 @@ public class PauseMenu : MonoBehaviour
     public string _newGameLevel;
     public static bool Paused = false;
     public GameObject PauseMenuUI;
-
+   
+    PlayerMovement player;
 
     void Update()
     {
+        
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (Paused)
@@ -26,6 +28,7 @@ public class PauseMenu : MonoBehaviour
                 
             }
         }
+       
     }
 
     public void Resume()
