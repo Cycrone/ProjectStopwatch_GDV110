@@ -9,6 +9,7 @@ public class PlayerAim : MonoBehaviour
     public event EventHandler<OnShootEventArgs>OnShoot;
     private Transform aimTransform;
     private Transform aimGunEnd;
+    public SpriteRenderer mySpriteRenderer;
 
     public class OnShootEventArgs : EventArgs
     {
@@ -44,11 +45,21 @@ public class PlayerAim : MonoBehaviour
 
     private void PlayerAiming()
     {
+        
         Vector3 mousePosition = GetMouseWorldPosition();
 
         Vector3 aimDirection = (mousePosition - transform.position).normalized;
         float angle = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg;
         aimTransform.eulerAngles = new Vector3(0, 0, angle);
+        if (mousePosition.x < transform.position.x)
+        {
+            mySpriteRenderer.flipY = true;
+        }
+        else if (mousePosition.x > transform.position.x)
+        {
+            mySpriteRenderer.flipY = false;
+        }
+
     }
 
 }

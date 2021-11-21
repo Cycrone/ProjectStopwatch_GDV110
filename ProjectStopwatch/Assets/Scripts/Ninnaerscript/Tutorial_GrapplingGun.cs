@@ -96,7 +96,7 @@ public class Tutorial_GrapplingGun : MonoBehaviour
         {
             grappleRope.enabled = false;
             m_springJoint2D.enabled = false;
-            m_rigidbody.gravityScale = 6;
+            m_rigidbody.gravityScale = 3;
         }
         else
         {

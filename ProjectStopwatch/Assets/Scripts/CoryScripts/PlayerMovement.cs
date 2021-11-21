@@ -13,7 +13,7 @@ public class PlayerMovement : MonoBehaviour
    
 
     public bool facingRight;
-    private float dirX = 0f;
+    public float dirX = 0f;
 
     [SerializeField] private LayerMask jumpableGround;
     [SerializeField] public int health = 1;
@@ -47,7 +47,6 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-        //IsGrounded();
         dirX = Input.GetAxisRaw("Horizontal") * moveSpeed;
         
         rb.velocity = new Vector2(dirX, rb.velocity.y);
@@ -61,13 +60,12 @@ public class PlayerMovement : MonoBehaviour
             animator.SetBool("isJumping", false);
             animator.SetFloat("speed", Mathf.Abs(dirX));
         }
-
-
+        
         if (IsGrounded() == false)
         {
             animator.SetBool("isJumping", true);
         }
-            FlipPlayer();
+        FlipPlayer();
     }
 
     private bool IsGrounded()
@@ -75,8 +73,6 @@ public class PlayerMovement : MonoBehaviour
         return Physics2D.BoxCast(coll.bounds.center, coll.bounds.size, 0f, Vector2.down, .1f, jumpableGround);
         
     }
-
-  
 
     void FlipPlayer()
     {
