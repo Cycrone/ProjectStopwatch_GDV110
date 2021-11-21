@@ -89,7 +89,7 @@ public class Tutorial_GrapplingGun : MonoBehaviour
         {
             grappleRope.enabled = false;
             m_springJoint2D.enabled = false;
-            m_rigidbody.gravityScale = 1;
+            m_rigidbody.gravityScale = 3;  //match ingame player gravity 
         }
         else
         {
@@ -117,6 +117,13 @@ public class Tutorial_GrapplingGun : MonoBehaviour
     {
         Vector2 distanceVector = m_camera.ScreenToWorldPoint(Input.mousePosition) - gunPivot.position;
         if (Physics2D.Raycast(firePoint.position, distanceVector.normalized))
+        //Ray ray = m_camera.ScreenPointToRay(Input.mousePosition);
+        //RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction);
+        //{
+         //   grapplePoint = hit.point;
+        //}
+
+        if (Physics2D.Raycast(firePoint.position, (GetMouseWorldPosition() - gunPivot.position).normalized))
         {
             RaycastHit2D _hit = Physics2D.Raycast(firePoint.position, distanceVector.normalized);
             if (_hit.transform.gameObject.layer == grappableLayerNumber || grappleToAll)
