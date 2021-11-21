@@ -2,10 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+
 public class EnemyMovement : MonoBehaviour
 {
     private Rigidbody2D enemyRigidBody2D;
-    public enemyState States;
     GameObject EnemyGun;
 
     [SerializeField] private float moveSpeed = 7f;
@@ -13,6 +14,7 @@ public class EnemyMovement : MonoBehaviour
     [SerializeField] float detectionRange = 5f;
     float angleBetween = 2f;
     float angleUp = 5f;
+    float angleDown = 1f;
 
     [SerializeField] Transform Player;
     [SerializeField] Transform castPoint;       //The point at where the enemy sight of view will be from
@@ -21,9 +23,15 @@ public class EnemyMovement : MonoBehaviour
     private float endPos;
     private float endPosBetween;
     private float endPosTop;
+    private float endPosDown;
 
     public bool facingRight;
     public bool movingRight;
+
+    float timer = 0;
+    bool timerReached = false;
+
+    int health = 1;
 
     #region Bullet
     [SerializeField]
@@ -33,8 +41,15 @@ public class EnemyMovement : MonoBehaviour
     float nextFire;
     #endregion
 
+IEnumerator timeWait()
+{
+    yield return new WaitForSeconds(5);
+
+}
+
     void TimeToFire()
     {
+        StartCoroutine(timeWait());
         if (Time.time > nextFire)
         {
             Instantiate(enemyBullet, transform.position, Quaternion.identity);
@@ -42,10 +57,19 @@ public class EnemyMovement : MonoBehaviour
         }
     }
 
-    public enum enemyState
+    public void TakeDamage(int damage)
     {
-        Patrolling,
-        Shooting
+        health -= damage;
+
+        if (health <= 0)
+        {
+            Die();
+        }
+    }
+
+    void Die()
+    {
+        Destroy(gameObject);
     }
 
     public void Flip()
@@ -66,12 +90,14 @@ public class EnemyMovement : MonoBehaviour
         }
 
         Vector2 endPos = castPoint.position + Vector3.right * castDist;     //equivalence of saying new vector3/2 (posx + distance)
-        Vector2 endPosBetween = castPoint.position + Vector3.right * castDist + Vector3.up * angleBetween;     //equivalence of saying new vector3/2 (posx + distance)
-        Vector2 endPosTop = castPoint.position + Vector3.right * castDist + Vector3.up * angleUp;     //equivalence of saying new vector3/2 (posx + distance)
+        Vector2 endPosBetween = castPoint.position + Vector3.right * castDist + Vector3.up * angleBetween;
+        Vector2 endPosTop = castPoint.position + Vector3.right * castDist + Vector3.up * angleUp;
+        Vector2 endPosDown = castPoint.position + Vector3.right * castDist + Vector3.down * angleDown;
         RaycastHit2D hit = Physics2D.Linecast(castPoint.position, endPos, 1 << LayerMask.NameToLayer("Shootable"));      //*(start, end, what it look for) (LAYER Shootable----!!!!!!)
         RaycastHit2D hit2 = Physics2D.Linecast(castPoint.position, endPosBetween, 1 << LayerMask.NameToLayer("Shootable"));
         RaycastHit2D hit3 = Physics2D.Linecast(castPoint.position, endPosTop, 1 << LayerMask.NameToLayer("Shootable"));
-        
+        RaycastHit2D hit4 = Physics2D.Linecast(castPoint.position, endPosDown, 1 << LayerMask.NameToLayer("Shootable"));
+
         if (hit.collider != null)
         {
             if (hit.collider.gameObject.CompareTag("Player"))
@@ -105,9 +131,21 @@ public class EnemyMovement : MonoBehaviour
                 val = false;
             }
         }
+        else if (hit4.collider != null)
+        {
+            if (hit4.collider.gameObject.CompareTag("Player"))
+            {
+                val = true;
+            }
+            else
+            {
+                val = false;
+            }
+        }
         Debug.DrawLine(castPoint.position, endPos, Color.red);
         Debug.DrawLine(castPoint.position, endPosBetween, Color.green);
         Debug.DrawLine(castPoint.position, endPosTop, Color.blue);
+        Debug.DrawLine(castPoint.position, endPosDown, Color.cyan);
         return val;
     }
 
@@ -138,9 +176,15 @@ public class EnemyMovement : MonoBehaviour
 
     public void Shooting()
     {
-        //GameObject EnemyGun = GameObject.Find("EnemyGun");
-        //EnemyGun.GetComponent<EnemyGun>().enabled = true;
-        TimeToFire();
+        if (!timerReached)
+            timer += Time.deltaTime;
+
+        if (!timerReached && timer > 1)     //delay shooting so when it see's u it waits x secs b4 firing first bullet
+        {
+            TimeToFire();
+
+            timerReached = false;            //Set to false so that We don't run this again
+        }
     }
 
     // Use this for initialization
@@ -155,12 +199,10 @@ public class EnemyMovement : MonoBehaviour
 
     public void Start()
     {
-        //States = enemyState.Patrolling;
-
         //GameObject EnemyGun = GameObject.Find("EnemyGun");
         //EnemyGun.GetComponent<EnemyGun>().enabled = false;
 
-        fireRate = 1.2f;
+        fireRate = 1f;
         nextFire = Time.time;
 
     }
@@ -178,6 +220,7 @@ public class EnemyMovement : MonoBehaviour
         else if (CanSeePlayer(detectionRange))
         {
             Shooting();
+
         }   
 
     }
