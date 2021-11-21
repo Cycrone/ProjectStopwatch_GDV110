@@ -48,8 +48,8 @@ public class Tutorial_GrapplingGun : MonoBehaviour
     [SerializeField] private float targetDistance = 3;
     [SerializeField] private float targetFrequncy = 1;
 
-    [HideInInspector] public Vector2 grapplePoint;
-    [HideInInspector] public Vector2 grappleDistanceVector;
+    [HideInInspector] public Vector3 grapplePoint;
+    [HideInInspector] public Vector3 grappleDistanceVector;
 
     private void Start()
     {
@@ -60,16 +60,9 @@ public class Tutorial_GrapplingGun : MonoBehaviour
 
     private Vector3 GetMouseWorldPosition()
     {
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        if (Physics.Raycast(ray, out RaycastHit raycastHit, 999f, mouseCollider))
-        {
-            return raycastHit.point;
-        }
-        else
-        {
-            return Vector3.zero;
-        }
+        return m_camera.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0));
     }
+
 
     private void Update()
     {
@@ -93,9 +86,9 @@ public class Tutorial_GrapplingGun : MonoBehaviour
             {
                 if (launchType == LaunchType.Transform_Launch)
                 {
-                    Vector2 firePointDistnace = firePoint.position - gunHolder.localPosition;
-                    Vector2 targetPos = grapplePoint - firePointDistnace;
-                    gunHolder.position = Vector2.Lerp(gunHolder.position, targetPos, Time.deltaTime * launchSpeed);
+                    Vector3 firePointDistnace = firePoint.position - gunHolder.position;
+                    Vector3 targetPos = grapplePoint - firePointDistnace;
+                    gunHolder.position = Vector3.Lerp(gunHolder.position, targetPos, Time.deltaTime * launchSpeed);
                 }
             }
         }
@@ -127,16 +120,23 @@ public class Tutorial_GrapplingGun : MonoBehaviour
 
     void SetGrapplePoint()
     {
-       
-        if (Physics2D.Raycast(firePoint.position, GetMouseWorldPosition()))
+        // it should only grapple to 2D objects if use this n take out rest of grapplepoint code
+        Ray ray = m_camera.ScreenPointToRay(Input.mousePosition);
+        RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction);
+        if (hit.collider != null)
         {
-            RaycastHit2D _hit = Physics2D.Raycast(firePoint.position, GetMouseWorldPosition());
+            grapplePoint = hit.point;
+        }
+
+        if (Physics2D.Raycast(firePoint.position, (GetMouseWorldPosition() - gunPivot.position).normalized))
+        {
+            RaycastHit2D _hit = Physics2D.Raycast(firePoint.position, (GetMouseWorldPosition() - gunPivot.position).normalized);
             if (_hit.transform.gameObject.layer == grappableLayerNumber || grappleToAll)
             {
                 if (Vector3.Distance(_hit.point, firePoint.position) <= maxDistnace || !hasMaxDistance)
                 {
                     grapplePoint = _hit.point;
-                    grappleDistanceVector = grapplePoint - (Vector2)gunPivot.position;
+                    grappleDistanceVector = grapplePoint - (Vector3)gunPivot.position;
                     grappleRope.enabled = true;
                 }
             }
@@ -169,7 +169,7 @@ public class Tutorial_GrapplingGun : MonoBehaviour
                 case LaunchType.Physics_Launch:
                     m_springJoint2D.connectedAnchor = grapplePoint;
 
-                    //Vector2 distanceVector = firePoint.position - gunHolder.position;
+                    //Vector3 distanceVector = firePoint.position - gunHolder.position;
 
                     m_springJoint2D.distance = GetMouseWorldPosition().magnitude;
                     m_springJoint2D.frequency = launchSpeed;
@@ -177,7 +177,7 @@ public class Tutorial_GrapplingGun : MonoBehaviour
                     break;
                 case LaunchType.Transform_Launch:
                     m_rigidbody.gravityScale = 0;
-                    m_rigidbody.velocity = Vector2.zero;
+                    m_rigidbody.velocity = Vector3.zero;
                     break;
             }
         }
@@ -188,8 +188,8 @@ public class Tutorial_GrapplingGun : MonoBehaviour
         if (firePoint != null && hasMaxDistance)
         {
             Gizmos.color = Color.green;
-            Gizmos.DrawWireSphere(firePoint.position, maxDistnace);
-        }
-    }
+            Gizmos.DrawWireSphere(firePoint.position, maxDistnace);   }    }
 
 }
+
+
