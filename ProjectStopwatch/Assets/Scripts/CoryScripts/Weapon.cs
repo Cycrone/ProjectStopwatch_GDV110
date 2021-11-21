@@ -6,6 +6,14 @@ public class Weapon : MonoBehaviour
 {
     [SerializeField]private Transform firePoint;
     [SerializeField]private GameObject bullet;
+    private bool readyToShoot;
+    public bool allowInvoke = true;
+    [SerializeField]public float timeBetweenShooting;
+
+    private void Awake()
+    {
+        readyToShoot = true;
+    }
 
 
     // Update is called once per frame
@@ -13,16 +21,31 @@ public class Weapon : MonoBehaviour
     {
         if (PauseMenu.Paused == false)
         {
-            if (Input.GetButtonDown("Fire1"))
-            {
-                Shoot();
-            }
-        }
         
+                if (readyToShoot && Input.GetButtonDown("Fire1"))
+                {
+                    Shoot();
+                }
+        }
+    
+      
+    }
+
+    private void ResetShot()
+    {
+
+        readyToShoot = true;
+        allowInvoke = true;
     }
 
     void Shoot()
     {
+        readyToShoot = false;
         Instantiate(bullet, firePoint.position, firePoint.rotation);
+        if (allowInvoke)
+        {
+            Invoke("ResetShot", timeBetweenShooting);
+            allowInvoke = false;
+        }
     }
 }

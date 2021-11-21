@@ -6,6 +6,9 @@ public class TimeController : MonoBehaviour
 {
     public float slowMotionTimeScale = 0.5f;
     public bool slowMotionEnabled = false;
+    public float slowMoTime = 0;
+    [SerializeField] public GameObject ScreenEffect;
+    [SerializeField] public float slowMoTimer = 5;
 
     [System.Serializable]
     public class AudioSourceData
@@ -34,17 +37,42 @@ public class TimeController : MonoBehaviour
         SlowMotionEffect(slowMotionEnabled);
     }
 
-    // Update is called once per frame
     void Update()
     {
-        //Activate/Deactivate slow motion on key press
+        //Slowmo activation
         if (Input.GetKeyDown(KeyCode.Q))
         {
             slowMotionEnabled = !slowMotionEnabled;
             SlowMotionEffect(slowMotionEnabled);
+            
         }
+        if (slowMotionEnabled)
+        {
+            slowMoTime -= Time.deltaTime;
+            ScreenEffect.SetActive(true);
+            if (slowMoTime <= 0)
+            {
+                SlowMotionEffect(false);
+                slowMotionEnabled = false;
+            }
+        }
+        else
+        {
+            if (slowMoTime < slowMoTimer)
+            {
+                slowMoTime += Time.deltaTime;
+                if (slowMoTime > slowMoTimer)
+                {
+                    slowMoTime = slowMoTimer;
+                }
+            }
+            ScreenEffect.SetActive(false);
+
+        }
+
     }
 
+    //Time scale and audio distortion/slowmo effect
     void SlowMotionEffect(bool enabled)
     {
         Time.timeScale = enabled ? slowMotionTimeScale : 1;

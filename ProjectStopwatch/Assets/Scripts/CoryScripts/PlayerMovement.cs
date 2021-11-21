@@ -16,10 +16,11 @@ public class PlayerMovement : MonoBehaviour
     private float dirX = 0f;
 
     [SerializeField] private LayerMask jumpableGround;
-    [SerializeField] public int health = 100;
+    [SerializeField] public int health = 1;
     [SerializeField] private float moveSpeed = 7f;
     [SerializeField] private float jumpForce = 14f;
     [SerializeField] public GameObject DeathScreenUI;
+    
 
     private void Start()
     {

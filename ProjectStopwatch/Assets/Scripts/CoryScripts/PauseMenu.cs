@@ -8,25 +8,32 @@ public class PauseMenu : MonoBehaviour
     public string _newGameLevel;
     public static bool Paused = false;
     public GameObject PauseMenuUI;
-   
-    PlayerMovement player;
+    public GameObject DeathScreenUI;
+    public GameObject WinScreen;
 
     void Update()
     {
-        
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (DeathScreenUI.activeInHierarchy == false && WinScreen.activeInHierarchy == false)
         {
-            if (Paused)
+            if (Input.GetKeyDown(KeyCode.Escape))
             {
-                Resume();
-               
-                
+                if (Paused)
+                {
+                    Resume();
+
+
+                }
+                else
+                {
+                    Pause();
+
+                }
             }
-            else
-            {
-                Pause();
-                
-            }
+        }
+        if (WinScreen.activeInHierarchy == true)
+        {
+            Time.timeScale = 0f;
+            Paused = true;
         }
        
     }
