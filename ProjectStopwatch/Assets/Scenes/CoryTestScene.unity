@@ -7838,8 +7838,8 @@ MonoBehaviour:
   autoConfigureDistance: 0
   targetDistance: 3
   targetFrequncy: 1
-  grapplePoint: {x: 0, y: 0}
-  grappleDistanceVector: {x: 0, y: 0}
+  grapplePoint: {x: 0, y: 0, z: 0}
+  grappleDistanceVector: {x: 0, y: 0, z: 0}
 --- !u!61 &903671895
 BoxCollider2D:
   m_ObjectHideFlags: 0
