@@ -9,7 +9,9 @@ public class PlayerAim : MonoBehaviour
     public event EventHandler<OnShootEventArgs>OnShoot;
     private Transform aimTransform;
     private Transform aimGunEnd;
-    public SpriteRenderer mySpriteRenderer;
+    public SpriteRenderer sGun;
+    public SpriteRenderer sPlayer;
+    public SpriteRenderer sArm;
 
     public class OnShootEventArgs : EventArgs
     {
@@ -53,12 +55,16 @@ public class PlayerAim : MonoBehaviour
         aimTransform.eulerAngles = new Vector3(0, 0, angle);
         if (mousePosition.x < transform.position.x)
         {
-            mySpriteRenderer.flipY = true;
-            
+            sGun.flipY = true;
+            sPlayer.flipY = true;
+            sArm.flipY = true;
+
         }
         else if (mousePosition.x > transform.position.x)
         {
-            mySpriteRenderer.flipY = false;
+            sGun.flipY = false;
+            sPlayer.flipY = false;
+            sArm.flipY = false;
         }
 
     }
