@@ -60,8 +60,21 @@ public class Tutorial_GrapplingGun : MonoBehaviour
 
     private Vector3 GetMouseWorldPosition()
     {
-        return m_camera.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0));
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        if (Physics.Raycast(ray, out RaycastHit raycastHit, 999f, mouseCollider))
+        {
+            return raycastHit.point;
+        }
+        else
+        {
+            return Vector3.zero;
+        }
     }
+
+    //private Vector3 GetMouseWorldPosition()
+    //{
+    //    return m_camera.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0));
+    //}
 
 
     private void Update()

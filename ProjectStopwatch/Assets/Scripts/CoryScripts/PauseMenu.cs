@@ -33,7 +33,6 @@ public class PauseMenu : MonoBehaviour
         if (WinScreen.activeInHierarchy == true)
         {
             Time.timeScale = 0f;
-            Paused = true;
         }
        
     }

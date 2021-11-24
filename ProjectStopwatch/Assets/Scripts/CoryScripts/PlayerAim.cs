@@ -54,6 +54,7 @@ public class PlayerAim : MonoBehaviour
         if (mousePosition.x < transform.position.x)
         {
             mySpriteRenderer.flipY = true;
+            
         }
         else if (mousePosition.x > transform.position.x)
         {
