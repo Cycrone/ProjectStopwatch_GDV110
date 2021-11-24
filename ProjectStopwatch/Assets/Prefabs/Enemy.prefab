@@ -42,7 +42,6 @@ GameObject:
   - component: {fileID: 4841642116306481006}
   - component: {fileID: 8342056235673735865}
   - component: {fileID: 6407189417885935818}
-  - component: {fileID: -1635309189364358531}
   - component: {fileID: 6095349896758778603}
   m_Layer: 7
   m_Name: Enemy
@@ -60,7 +59,7 @@ Transform:
   m_GameObject: {fileID: 4841642116306481002}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -1.6, y: 2.2107, z: 0}
-  m_LocalScale: {x: 0.7, y: 1.8614076, z: 0.7}
+  m_LocalScale: {x: 0.7, y: 2.5, z: 0.7}
   m_Children:
   - {fileID: 4841642117062341072}
   - {fileID: 4841642115113486565}
@@ -136,7 +135,7 @@ Rigidbody2D:
   m_AngularDrag: 0.05
   m_GravityScale: 1
   m_Material: {fileID: 0}
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
@@ -166,19 +165,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &-1635309189364358531
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4841642116306481002}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 755e2dcdee01bd84187815ae7ab62b53, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 1
 --- !u!114 &6095349896758778603
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -191,10 +177,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f46a3e01bfc8064fabdfea965bd02ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  States: 0
+  PlayerGO: {fileID: 6913248744854674220, guid: 8ff04f61648d36a43bd462993c38e4f9,
+    type: 3}
   moveSpeed: 250
   moveDistance: 5
-  detectionRange: 7
+  detectionRange: 10
+  aTimer: 3
+  health: 1
   Player: {fileID: 4841642116306480993}
   castPoint: {fileID: 4841642115113486565}
   facingRight: 0
