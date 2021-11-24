@@ -51,6 +51,10 @@ public class Tutorial_GrapplingGun : MonoBehaviour
     [HideInInspector] public Vector3 grapplePoint;
     [HideInInspector] public Vector3 grappleDistanceVector;
 
+    //public SpriteRenderer sGun;
+    //public SpriteRenderer sPlayer;
+    //public SpriteRenderer sArm;
+
     private void Start()
     {
         grappleRope.enabled = false;
@@ -118,6 +122,7 @@ public class Tutorial_GrapplingGun : MonoBehaviour
     }
     void RotateGun(Vector3 lookPoint, bool allowRotationOverTime)
     {
+        Vector3 mousePosition = GetMouseWorldPosition();
         Vector3 distanceVector = lookPoint - gunPivot.position;
 
         float angle = Mathf.Atan2(distanceVector.y, distanceVector.x) * Mathf.Rad2Deg;
@@ -129,6 +134,21 @@ public class Tutorial_GrapplingGun : MonoBehaviour
         {
             gunPivot.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
         }
+
+        //if (mousePosition.x < transform.position.x)
+        //{
+        //    sGun.flipY = true;
+        //    sPlayer.flipX = true;
+        //    sArm.flipY = true;
+
+        //}
+        //else if (mousePosition.x > transform.position.x)
+        //{
+        //    sGun.flipY = false;
+        //    sPlayer.flipX = false;
+        //    sArm.flipY = false;
+        //}
+
     }
 
     void SetGrapplePoint()

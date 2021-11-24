@@ -21810,7 +21810,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5dee3dbce88f564290cf6a3b846354d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _newGameLevel: CoryTestScene
+  _newGameLevel: Lvl3
   PauseMenuUI: {fileID: 1974084894}
   DeathScreenUI: {fileID: 1982772482}
   WinScreen: {fileID: 761717365}
@@ -58975,7 +58975,8 @@ MonoBehaviour:
   mouseCollider:
     serializedVersion: 2
     m_Bits: 4294967295
-  mySpriteRenderer: {fileID: 1747896927}
+  sGun: {fileID: 0}
+  sPlayer: {fileID: 0}
 --- !u!231 &2016216916
 SpringJoint2D:
   m_ObjectHideFlags: 0

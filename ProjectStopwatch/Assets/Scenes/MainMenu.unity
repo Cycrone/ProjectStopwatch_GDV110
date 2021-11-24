@@ -8266,7 +8266,7 @@ MonoBehaviour:
   qualityDropdown: {fileID: 1595098719}
   fullScreenToggle: {fileID: 1538206175}
   confirmationPrompt: {fileID: 644459208}
-  _newGameLevel: CoryTestScene
+  _newGameLevel: Lvl1
   NoSaveGame_Dialog: {fileID: 643803660}
   resolutioDropdown: {fileID: 70672674}
 --- !u!4 &1593266843
