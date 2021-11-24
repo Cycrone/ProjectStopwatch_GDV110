@@ -2,27 +2,28 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour
-{
-	[SerializeField]public int health = 100;
-
-	void Update()
-	{ 
+//public class Enemy : MonoBehaviour
+//{
+//	//[SerializeField]public int health = 100;
 	
-	}
 
-	public void TakeDamage(int damage)
-	{
-		health -= damage;
+//    void Update()
+//	{ 
+	
+//	}
 
-		if (health <= 0)
-		{
-			Die();
-		}
-	}
+//	public void TakeDamage(int damage)
+//	{
+//		health -= damage;
 
-	void Die()
-	{
-		Destroy(gameObject);
-	}
-}
+//		if (health <= 0)
+//		{
+//			Die();
+//		}
+//	}
+
+//	void Die()
+//	{
+//		Destroy(gameObject);
+//	}
+//}

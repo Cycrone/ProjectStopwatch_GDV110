@@ -8,10 +8,13 @@ public class EnemyMovement : MonoBehaviour
 {
     private Rigidbody2D enemyRigidBody2D;
     GameObject EnemyGun;
+    [SerializeField]GameObject PlayerGO;
 
     [SerializeField] private float moveSpeed = 7f;
     [SerializeField] private float moveDistance = 5f;
     [SerializeField] float detectionRange = 5f;
+    [SerializeField] public float aTimer = 100;
+    public int health = 100;
     float angleBetween = 2f;
     float angleUp = 5f;
     float angleDown = 1f;
@@ -31,7 +34,7 @@ public class EnemyMovement : MonoBehaviour
     float timer = 0;
     bool timerReached = false;
 
-    int health = 1;
+    
 
     #region Bullet
     [SerializeField]
@@ -41,7 +44,7 @@ public class EnemyMovement : MonoBehaviour
     float nextFire;
     #endregion
 
-IEnumerator timeWait()
+    IEnumerator timeWait()
 {
     yield return new WaitForSeconds(5);
 
@@ -60,15 +63,17 @@ IEnumerator timeWait()
     public void TakeDamage(int damage)
     {
         health -= damage;
-
         if (health <= 0)
         {
+            PlayerGO.GetComponent<HUD>().timer += aTimer;   
             Die();
+            
         }
     }
 
     void Die()
     {
+
         Destroy(gameObject);
     }
 

@@ -12,7 +12,6 @@ public class HUD : MonoBehaviour
     [SerializeField] public float timer = 500;
     public GameObject Item;
     public bool timerIsRunning = false;
-    
 
     // Start is called before the first frame update
     void Start()
@@ -47,6 +46,7 @@ public class HUD : MonoBehaviour
     }
 
 
+
     private void OnTriggerEnter2D(Collider2D collider)
     {
         if (collider.gameObject.CompareTag("Item"))
@@ -68,6 +68,7 @@ public class HUD : MonoBehaviour
         {
             if (timer > 0)
             {
+                
                 timer -= Time.deltaTime;
             }
             else
@@ -77,7 +78,9 @@ public class HUD : MonoBehaviour
                 timer = 0f;
                 timerIsRunning = false;
             }
+            
         }
 
     }
+
 }
