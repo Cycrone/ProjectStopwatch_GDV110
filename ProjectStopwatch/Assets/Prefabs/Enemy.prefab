@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4841642115113486562}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.61, y: 0.24999991, z: 0}
+  m_LocalPosition: {x: 0.048, y: 0.0578, z: 0}
   m_LocalScale: {x: 1.4285713, y: 1.4285713, z: 1.4285713}
   m_Children: []
   m_Father: {fileID: 4841642116306480993}
@@ -44,6 +44,7 @@ GameObject:
   - component: {fileID: 6407189417885935818}
   - component: {fileID: 6095349896758778603}
   - component: {fileID: 1293256924152550501}
+  - component: {fileID: 8551158400846604566}
   m_Layer: 6
   m_Name: Enemy
   m_TagString: enemy
@@ -60,7 +61,7 @@ Transform:
   m_GameObject: {fileID: 4841642116306481002}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -1.6, y: 2.2107, z: 0}
-  m_LocalScale: {x: 0.7, y: 2.5, z: 0.7}
+  m_LocalScale: {x: 10.914832, y: 12.137025, z: 2.42256}
   m_Children:
   - {fileID: 4841642117062341072}
   - {fileID: 4841642115113486565}
@@ -107,10 +108,10 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7,
+  m_Sprite: {fileID: 1195458779362535816, guid: 95e7045597f00704e83d1543849a138a,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
+  m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 1, y: 1}
@@ -153,18 +154,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.008308884, y: -0.011324644}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 0.32, y: 0.32}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.19735509, y: 0.26898998}
   m_EdgeRadius: 0
 --- !u!114 &6095349896758778603
 MonoBehaviour:
@@ -189,6 +190,7 @@ MonoBehaviour:
   castPoint: {fileID: 4841642115113486565}
   facingRight: 0
   movingRight: 1
+  animator: {fileID: 0}
   enemyBullet: {fileID: 4940073944981952410, guid: 32ac8361808bfde4798e2c71d4dff405,
     type: 3}
 --- !u!82 &1293256924152550501
@@ -287,6 +289,25 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!95 &8551158400846604566
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4841642116306481002}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e7781a5360094204188138c8ce843908, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &4841642117062341073
 GameObject:
   m_ObjectHideFlags: 0
@@ -312,8 +333,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4841642117062341073}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.56015843, y: 0.26324865, z: 0}
-  m_LocalScale: {x: 0.38160515, y: 0.16466634, z: 1.5344285}
+  m_LocalPosition: {x: 0.011, y: 0.059248753, z: 0}
+  m_LocalScale: {x: 0.02734552, y: 0.011799858, z: 0.109955914}
   m_Children: []
   m_Father: {fileID: 4841642116306480993}
   m_RootOrder: 0

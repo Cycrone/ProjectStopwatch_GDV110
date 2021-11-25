@@ -7,6 +7,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3430505630718381418, guid: 46389cbc56f460d4f84740d90debee9f,
+        type: 3}
+      propertyPath: m_Name
+      value: WinScreen Variant 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3430505630718381418, guid: 46389cbc56f460d4f84740d90debee9f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3430505631509396816, guid: 46389cbc56f460d4f84740d90debee9f,
+        type: 3}
+      propertyPath: m_text
+      value: REDEPLOY
+      objectReference: {fileID: 0}
     - target: {fileID: 5513615012824318602, guid: 46389cbc56f460d4f84740d90debee9f,
         type: 3}
       propertyPath: m_Name

@@ -34,7 +34,9 @@ public class EnemyMovement : MonoBehaviour
     float timer = 0;
     bool timerReached = false;
 
-    
+    public Animator animator;
+
+
 
     #region Bullet
     [SerializeField]
@@ -166,6 +168,7 @@ public class EnemyMovement : MonoBehaviour
             enemyRigidBody2D.AddForce(Vector2.right * moveSpeed * Time.deltaTime);
             if (!facingRight)
                 Flip();
+           
         }
 
         if (enemyRigidBody2D.position.x >= endPos)
@@ -176,6 +179,7 @@ public class EnemyMovement : MonoBehaviour
             enemyRigidBody2D.AddForce(-Vector2.right * moveSpeed * Time.deltaTime);
             if (facingRight)
                 Flip();
+           
         }
         if (enemyRigidBody2D.position.x <= startPos)
             movingRight = true;
@@ -186,7 +190,7 @@ public class EnemyMovement : MonoBehaviour
         if (!timerReached)
             timer += Time.deltaTime;
 
-        if (!timerReached && timer > 1)     //delay shooting so when it see's u it waits x secs b4 firing first bullet
+        if (!timerReached && timer > 0.5)     //delay shooting so when it see's u it waits x secs b4 firing first bullet
         {
             TimeToFire();
 
@@ -209,7 +213,7 @@ public class EnemyMovement : MonoBehaviour
         //GameObject EnemyGun = GameObject.Find("EnemyGun");
         //EnemyGun.GetComponent<EnemyGun>().enabled = false;
 
-        fireRate = 1f;
+        fireRate = 0.5f;
         nextFire = Time.time;
 
     }
