@@ -9,6 +9,10 @@ TagManager:
   - Aiming
   - Item
   - Win
+  - Win2
+  - Win3
+  - Item2
+  - Item3
   layers:
   - Default
   - TransparentFX
