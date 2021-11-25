@@ -58,6 +58,7 @@ public class PlayerMovement : MonoBehaviour
             if (Input.GetButtonDown("Jump"))
             {
                 rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+                GetComponent<AudioSource>().Play();
             }
             animator.SetBool("isJumping", false);
             animator.SetFloat("speed", Mathf.Abs(dirX));

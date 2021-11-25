@@ -56,7 +56,9 @@ public class EnemyMovement : MonoBehaviour
         if (Time.time > nextFire)
         {
             Instantiate(enemyBullet, transform.position, Quaternion.identity);
+            GetComponent<AudioSource>().Play();
             nextFire = Time.time + fireRate;
+            
         }
     }
 
@@ -225,7 +227,6 @@ public class EnemyMovement : MonoBehaviour
         else if (CanSeePlayer(detectionRange))
         {
             Shooting();
-
         }   
 
     }

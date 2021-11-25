@@ -42,6 +42,7 @@ public class Tutorial_GrapplingGun : MonoBehaviour
     [SerializeField] private bool launchToPoint = true;
     [SerializeField] private LaunchType launchType = LaunchType.Physics_Launch;
     [SerializeField] private float launchSpeed = 1;
+    [SerializeField] private AudioClip grapplenoise;
 
     [Header("No Launch To Point")]
     [SerializeField] private bool autoConfigureDistance = false;
@@ -50,6 +51,8 @@ public class Tutorial_GrapplingGun : MonoBehaviour
 
     [HideInInspector] public Vector3 grapplePoint;
     [HideInInspector] public Vector3 grappleDistanceVector;
+
+    public AudioSource Grapplenoise;
 
     //public SpriteRenderer sGun;
     //public SpriteRenderer sPlayer;
@@ -106,6 +109,7 @@ public class Tutorial_GrapplingGun : MonoBehaviour
                     Vector3 firePointDistnace = firePoint.position - gunHolder.position;
                     Vector3 targetPos = grapplePoint - firePointDistnace;
                     gunHolder.position = Vector3.Lerp(gunHolder.position, targetPos, Time.deltaTime * launchSpeed);
+                    GetComponent<AudioSource>().Play();
                 }
             }
         }
@@ -207,6 +211,7 @@ public class Tutorial_GrapplingGun : MonoBehaviour
                     m_springJoint2D.distance = GetMouseWorldPosition().magnitude;
                     m_springJoint2D.frequency = launchSpeed;
                     m_springJoint2D.enabled = true;
+                    
                     break;
                 case LaunchType.Transform_Launch:
                     m_rigidbody.gravityScale = 0;
@@ -214,14 +219,20 @@ public class Tutorial_GrapplingGun : MonoBehaviour
                     break;
             }
         }
+
+    
     }
+
+
+
 
     private void OnDrawGizmosSelected()
     {
         if (firePoint != null && hasMaxDistance)
         {
             Gizmos.color = Color.green;
-            Gizmos.DrawWireSphere(firePoint.position, maxDistnace);   }    }
+            Gizmos.DrawWireSphere(firePoint.position, maxDistnace);   }
+                }
 
 }
 

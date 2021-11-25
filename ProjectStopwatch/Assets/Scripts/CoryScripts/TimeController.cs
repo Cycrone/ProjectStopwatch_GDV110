@@ -17,6 +17,8 @@ public class TimeController : MonoBehaviour
         public float defaultPitch;
     }
 
+   
+
     AudioSourceData[] audioSources;
 
     // Start is called before the first frame update
@@ -45,6 +47,7 @@ public class TimeController : MonoBehaviour
             slowMotionEnabled = !slowMotionEnabled;
             SlowMotionEffect(slowMotionEnabled);
             
+            
         }
         if (slowMotionEnabled)
         {
@@ -54,6 +57,7 @@ public class TimeController : MonoBehaviour
             {
                 SlowMotionEffect(false);
                 slowMotionEnabled = false;
+                
             }
         }
         else
