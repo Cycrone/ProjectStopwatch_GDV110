@@ -52,6 +52,8 @@ public class Tutorial_GrapplingGun : MonoBehaviour
     [HideInInspector] public Vector3 grapplePoint;
     [HideInInspector] public Vector3 grappleDistanceVector;
 
+    
+
     public AudioSource Grapplenoise;
 
     //public SpriteRenderer sGun;
@@ -86,6 +88,7 @@ public class Tutorial_GrapplingGun : MonoBehaviour
 
     private void Update()
     {
+        
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
             SetGrapplePoint();
@@ -124,6 +127,7 @@ public class Tutorial_GrapplingGun : MonoBehaviour
             RotateGun(GetMouseWorldPosition(), true);
         }
     }
+
     void RotateGun(Vector3 lookPoint, bool allowRotationOverTime)
     {
         Vector3 mousePosition = GetMouseWorldPosition();
@@ -232,7 +236,7 @@ public class Tutorial_GrapplingGun : MonoBehaviour
         {
             Gizmos.color = Color.green;
             Gizmos.DrawWireSphere(firePoint.position, maxDistnace);   }
-                }
+        }
 
 }
 

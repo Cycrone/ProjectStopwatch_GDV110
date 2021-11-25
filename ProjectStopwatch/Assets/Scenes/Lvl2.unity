@@ -25247,6 +25247,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &730160776 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8448229808174980071, guid: 5e31e2fad12c54242a27ed9549ea5822,
+    type: 3}
+  m_PrefabInstance: {fileID: 1527857032}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc784ca2acc126446a70b889c5f63bf3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &732369048
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -28114,6 +28126,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 431aacd8abec54d46993fb2b34e26efe, type: 3}
+--- !u!50 &820046162 stripped
+Rigidbody2D:
+  m_CorrespondingSourceObject: {fileID: 8448229806715502749, guid: 5e31e2fad12c54242a27ed9549ea5822,
+    type: 3}
+  m_PrefabInstance: {fileID: 1527857032}
+  m_PrefabAsset: {fileID: 0}
+--- !u!231 &820046163 stripped
+SpringJoint2D:
+  m_CorrespondingSourceObject: {fileID: 8448229806715502745, guid: 5e31e2fad12c54242a27ed9549ea5822,
+    type: 3}
+  m_PrefabInstance: {fileID: 1527857032}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &821406872 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 431aacd8abec54d46993fb2b34e26efe,
@@ -35818,6 +35842,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 431aacd8abec54d46993fb2b34e26efe, type: 3}
+--- !u!1 &1052811889 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8448229808018880409, guid: 5e31e2fad12c54242a27ed9549ea5822,
+    type: 3}
+  m_PrefabInstance: {fileID: 1527857032}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1054711939 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 431aacd8abec54d46993fb2b34e26efe,
@@ -51273,6 +51303,26 @@ PrefabInstance:
       propertyPath: slowMo
       value: 
       objectReference: {fileID: 1472198155}
+    - target: {fileID: 8448229806568249839, guid: 5e31e2fad12c54242a27ed9549ea5822,
+        type: 3}
+      propertyPath: g
+      value: 
+      objectReference: {fileID: 1052811889}
+    - target: {fileID: 8448229806568249839, guid: 5e31e2fad12c54242a27ed9549ea5822,
+        type: 3}
+      propertyPath: grappleRope
+      value: 
+      objectReference: {fileID: 730160776}
+    - target: {fileID: 8448229806568249839, guid: 5e31e2fad12c54242a27ed9549ea5822,
+        type: 3}
+      propertyPath: m_rigidbody
+      value: 
+      objectReference: {fileID: 820046162}
+    - target: {fileID: 8448229806568249839, guid: 5e31e2fad12c54242a27ed9549ea5822,
+        type: 3}
+      propertyPath: m_springJoint2D
+      value: 
+      objectReference: {fileID: 820046163}
     - target: {fileID: 8448229806715502720, guid: 5e31e2fad12c54242a27ed9549ea5822,
         type: 3}
       propertyPath: DeathScreenUI
@@ -51282,6 +51332,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Player Level1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8448229806715502722, guid: 5e31e2fad12c54242a27ed9549ea5822,
+        type: 3}
+      propertyPath: slowMoTimer
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 8448229806715502722, guid: 5e31e2fad12c54242a27ed9549ea5822,
         type: 3}
@@ -51388,6 +51443,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8448229806984056211, guid: 5e31e2fad12c54242a27ed9549ea5822,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.152
+      objectReference: {fileID: 0}
+    - target: {fileID: 8448229808018880408, guid: 5e31e2fad12c54242a27ed9549ea5822,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.106
+      objectReference: {fileID: 0}
+    - target: {fileID: 8448229808018880411, guid: 5e31e2fad12c54242a27ed9549ea5822,
+        type: 3}
+      propertyPath: g
+      value: 
+      objectReference: {fileID: 1052811889}
     - target: {fileID: 8448229808018880411, guid: 5e31e2fad12c54242a27ed9549ea5822,
         type: 3}
       propertyPath: m_camera
