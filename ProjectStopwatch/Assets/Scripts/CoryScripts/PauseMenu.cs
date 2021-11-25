@@ -57,6 +57,11 @@ public class PauseMenu : MonoBehaviour
         Paused = true;
     }
 
+    public void NextLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
+
     public void LoadMenu()
     {
         SceneManager.LoadScene("MainMenu");
