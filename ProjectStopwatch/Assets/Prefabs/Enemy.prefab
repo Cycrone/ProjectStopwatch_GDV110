@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4841642115113486565}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: CastDist
-  m_TagString: Untagged
+  m_TagString: enemy
   m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -44,9 +44,9 @@ GameObject:
   - component: {fileID: 6407189417885935818}
   - component: {fileID: 6095349896758778603}
   - component: {fileID: 1293256924152550501}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -297,9 +297,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4841642117062341072}
   - component: {fileID: 4841642117062341074}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: EnemyGun
-  m_TagString: Untagged
+  m_TagString: enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
