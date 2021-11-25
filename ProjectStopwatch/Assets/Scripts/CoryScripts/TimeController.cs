@@ -9,6 +9,7 @@ public class TimeController : MonoBehaviour
     public float slowMoTime = 0;
     [SerializeField] public GameObject ScreenEffect;
     [SerializeField] public float slowMoTimer = 5;
+    public SlowmoTime slowmo;
 
     [System.Serializable]
     public class AudioSourceData
@@ -41,16 +42,24 @@ public class TimeController : MonoBehaviour
 
     void Update()
     {
+
         //Slowmo activation
-        if (Input.GetKeyDown(KeyCode.Q))
+        if (Input.GetKey(KeyCode.LeftShift))
         {
-            slowMotionEnabled = !slowMotionEnabled;
+            slowMotionEnabled = true;
+            SlowMotionEffect(slowMotionEnabled);
+
+        }
+        else if (Input.GetKeyUp(KeyCode.LeftShift))
+        {
+            slowMotionEnabled = false;
             SlowMotionEffect(slowMotionEnabled);
             
             
         }
         if (slowMotionEnabled)
         {
+            slowmo.UpdateSlowmoTimer();
             slowMoTime -= Time.deltaTime;
             ScreenEffect.SetActive(true);
             if (slowMoTime <= 0)
@@ -62,6 +71,7 @@ public class TimeController : MonoBehaviour
         }
         else
         {
+            slowmo.UpdateSlowmoTimer();
             if (slowMoTime < slowMoTimer)
             {
                 slowMoTime += Time.deltaTime;
