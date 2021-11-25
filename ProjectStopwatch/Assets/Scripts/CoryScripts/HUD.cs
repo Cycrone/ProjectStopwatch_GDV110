@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
+
 public class HUD : MonoBehaviour
 {
     [SerializeField] public GameObject OutOfTimeUI;
@@ -12,6 +13,7 @@ public class HUD : MonoBehaviour
     [SerializeField] public float timer = 500;
     public GameObject Item;
     public bool timerIsRunning = false;
+  
 
     // Start is called before the first frame update
     void Start()
