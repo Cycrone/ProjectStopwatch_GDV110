@@ -8,10 +8,14 @@ public class HUD : MonoBehaviour
 {
     [SerializeField] public GameObject OutOfTimeUI;
     [SerializeField] public GameObject ItemUI;
+    [SerializeField] public GameObject ItemUI2;
+    [SerializeField] public GameObject ItemUI3;
     [SerializeField] public GameObject WinScreen;
     [SerializeField] public TMP_Text timerText;
     [SerializeField] public float timer = 500;
     public GameObject Item;
+    public GameObject Item2;
+    public GameObject Item3;
     public bool timerIsRunning = false;
   
 
@@ -41,6 +45,14 @@ public class HUD : MonoBehaviour
     {
         ItemUI.SetActive(true);
     }
+    public void ItemDisplay2()
+    {
+        ItemUI2.SetActive(true);
+    }
+    public void ItemDisplay3()
+    {
+        ItemUI3.SetActive(true);
+    }
 
     public void WinDisplay()
     {
@@ -57,7 +69,27 @@ public class HUD : MonoBehaviour
             Destroy(Item);
 
         }
+        if (collider.gameObject.CompareTag("Item2"))
+        {
+            ItemDisplay2();
+            Destroy(Item2);
+
+        }
+        if (collider.gameObject.CompareTag("Item3"))
+        {
+            ItemDisplay3();
+            Destroy(Item3);
+
+        }
         if (ItemUI.activeInHierarchy == true && collider.gameObject.CompareTag("Win"))
+        {
+            WinDisplay();
+        }
+        if (ItemUI.activeInHierarchy == true && ItemUI2.activeInHierarchy == true && collider.gameObject.CompareTag("Win2"))
+        {
+            WinDisplay();
+        }
+        if (ItemUI.activeInHierarchy == true && ItemUI2.activeInHierarchy == true  && ItemUI3.activeInHierarchy == true  && collider.gameObject.CompareTag("Win3"))
         {
             WinDisplay();
         }

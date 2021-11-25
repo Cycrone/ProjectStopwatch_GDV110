@@ -1,7 +1,25 @@
 fileFormatVersion: 2
 guid: ed1b0fdb8f8ddf14c95c1b433bdd141a
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: 2760445558757600287
+    second: UImenu1_24
+  - first:
+      213: 8744633677934628900
+    second: UImenu1_25
+  - first:
+      213: 7925572920978638739
+    second: UImenu1_27
+  - first:
+      213: 1217853336437272042
+    second: UImenu1_28
+  - first:
+      213: -1542005626907823287
+    second: UImenu1_29
+  - first:
+      213: -3551242511982025710
+    second: UImenu1_30
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -41,7 +59,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -51,7 +69,7 @@ TextureImporter:
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
-  spriteTessellationDetail: -1
+  spriteTessellationDetail: 0
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
@@ -75,10 +93,164 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
-    outline: []
+    sprites:
+    - serializedVersion: 2
+      name: UImenu1_24
+      rect:
+        serializedVersion: 2
+        x: 342
+        y: 549
+        width: 345
+        height: 87
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f1c2d873c921f4620800000000000000
+      internalID: 2760445558757600287
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UImenu1_25
+      rect:
+        serializedVersion: 2
+        x: 366
+        y: 695
+        width: 308
+        height: 84
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4201630cffd2b5970800000000000000
+      internalID: 8744633677934628900
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UImenu1_27
+      rect:
+        serializedVersion: 2
+        x: 382
+        y: 820
+        width: 256
+        height: 278
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3970364849a4dfd60800000000000000
+      internalID: 7925572920978638739
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UImenu1_28
+      rect:
+        serializedVersion: 2
+        x: 872
+        y: 717
+        width: 1233
+        height: 359
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aed2ed2382fa6e010800000000000000
+      internalID: 1217853336437272042
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UImenu1_29
+      rect:
+        serializedVersion: 2
+        x: 1013
+        y: 79
+        width: 407
+        height: 637
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 943718e5d02b99ae0800000000000000
+      internalID: -1542005626907823287
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UImenu1_30
+      rect:
+        serializedVersion: 2
+        x: 375
+        y: 412
+        width: 276
+        height: 93
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 214ab0a20c377bec0800000000000000
+      internalID: -3551242511982025710
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline:
+    - - {x: -1080, y: 564}
+      - {x: -1080, y: -564}
+      - {x: 1080, y: -564}
+      - {x: 1080, y: 564}
+    - - {x: -725, y: 245}
+      - {x: -725, y: 542}
+      - {x: -392, y: 542}
+      - {x: -392, y: 245}
+    - - {x: -176, y: 156}
+      - {x: -176, y: 533}
+      - {x: 1005, y: 533}
+      - {x: 1005, y: 156}
+    - - {x: -128, y: -521}
+      - {x: -128, y: 123}
+      - {x: 398, y: 123}
+      - {x: 398, y: -521}
     physicsShape: []
     bones: []
     spriteID: 5e97eb03825dee720800000000000000
