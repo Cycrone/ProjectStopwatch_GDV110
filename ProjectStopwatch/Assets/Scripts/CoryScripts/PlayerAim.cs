@@ -11,7 +11,9 @@ public class PlayerAim : MonoBehaviour
     private Transform aimGunEnd;
     public SpriteRenderer sGun;
     public SpriteRenderer sPlayer;
-    public SpriteRenderer sArm;
+    //public SpriteRenderer sArm;
+   
+
 
     public class OnShootEventArgs : EventArgs
     {
@@ -49,6 +51,7 @@ public class PlayerAim : MonoBehaviour
     {
         
         Vector3 mousePosition = GetMouseWorldPosition();
+       
 
         Vector3 aimDirection = (mousePosition - transform.position).normalized;
         float angle = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg;
@@ -56,15 +59,14 @@ public class PlayerAim : MonoBehaviour
         if (mousePosition.x < transform.position.x)
         {
             sGun.flipY = true;
-            sPlayer.flipY = true;
-            sArm.flipY = true;
-
+            sPlayer.flipX = true;
+            //sArm.flipY = true;
         }
         else if (mousePosition.x > transform.position.x)
         {
             sGun.flipY = false;
-            sPlayer.flipY = false;
-            sArm.flipY = false;
+            sPlayer.flipX = false;
+            //sArm.flipY = false;
         }
 
     }

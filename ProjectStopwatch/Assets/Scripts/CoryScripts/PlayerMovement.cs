@@ -67,7 +67,7 @@ public class PlayerMovement : MonoBehaviour
         {
             animator.SetBool("isJumping", true);
         }
-        FlipPlayer();
+        //FlipPlayer();
     }
 
     private bool IsGrounded()
