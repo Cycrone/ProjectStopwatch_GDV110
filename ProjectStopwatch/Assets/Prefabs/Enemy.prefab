@@ -178,7 +178,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f46a3e01bfc8064fabdfea965bd02ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerGO: {fileID: 6913248744854674220, guid: 8ff04f61648d36a43bd462993c38e4f9,
+  PlayerGO: {fileID: 8448229806715502721, guid: 5e31e2fad12c54242a27ed9549ea5822,
     type: 3}
   moveSpeed: 250
   moveDistance: 5
