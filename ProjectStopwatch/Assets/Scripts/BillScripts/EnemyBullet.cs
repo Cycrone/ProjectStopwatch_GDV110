@@ -21,18 +21,22 @@ public class EnemyBullet : MonoBehaviour
         target = GameObject.FindObjectOfType<PlayerMovement>(); 
         moveDirection = (target.transform.position - transform.position).normalized * speed;
         rb.velocity = new Vector2(moveDirection.x, moveDirection.y);
-        Destroy(gameObject, 3f);
+        //Destroy(gameObject, 3f);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         target = collision.GetComponent<PlayerMovement>();
-        if (collision.gameObject.name.Equals ("Player"))
+        if (!(collision.gameObject.name.Equals("Enemy")))
+        {
+            Destroy(gameObject);
+        }
+        if (collision.gameObject.name.Equals("Player"))
         {
             target.TakeDamage(damage);
             Destroy(gameObject);
         }
-        Destroy(gameObject);
+        
     }
 
 }
