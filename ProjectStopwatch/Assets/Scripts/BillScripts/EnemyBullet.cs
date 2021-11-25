@@ -30,7 +30,7 @@ public class EnemyBullet : MonoBehaviour
         if (collision.gameObject.name.Equals ("Player"))
         {
             target.TakeDamage(damage);
-           
+            Destroy(gameObject);
         }
         Destroy(gameObject);
     }
