@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4841642115113486565}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: CastDist
   m_TagString: Untagged
   m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
@@ -44,9 +44,9 @@ GameObject:
   - component: {fileID: 6407189417885935818}
   - component: {fileID: 6095349896758778603}
   - component: {fileID: 1293256924152550501}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -178,7 +178,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f46a3e01bfc8064fabdfea965bd02ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerGO: {fileID: 6913248744854674220, guid: 8ff04f61648d36a43bd462993c38e4f9,
+  PlayerGO: {fileID: 8448229806715502721, guid: 5e31e2fad12c54242a27ed9549ea5822,
     type: 3}
   moveSpeed: 250
   moveDistance: 5
@@ -297,7 +297,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4841642117062341072}
   - component: {fileID: 4841642117062341074}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: EnemyGun
   m_TagString: Untagged
   m_Icon: {fileID: 0}

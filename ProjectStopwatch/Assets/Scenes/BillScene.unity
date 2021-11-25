@@ -201,6 +201,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   firePoint: {fileID: 330195640}
   bullet: {fileID: 3910635454597880882, guid: b862cb403c8ca2d45b29034934191f55, type: 3}
+  allowInvoke: 1
+  timeBetweenShooting: 0
 --- !u!212 &489749904
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -491,6 +493,8 @@ MonoBehaviour:
   mouseCollider:
     serializedVersion: 2
     m_Bits: 0
+  sGun: {fileID: 0}
+  sPlayer: {fileID: 0}
 --- !u!114 &1209852326
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -503,12 +507,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05ea69e3a6494844ba02774e62cf6f5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 0}
   facingRight: 1
+  dirX: 0
   jumpableGround:
     serializedVersion: 2
     m_Bits: 64
+  health: 1
   moveSpeed: 7
   jumpForce: 5
+  DeathScreenUI: {fileID: 0}
 --- !u!61 &1209852327
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -549,6 +557,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slowMotionTimeScale: 0.5
   slowMotionEnabled: 0
+  slowMoTime: 0
+  ScreenEffect: {fileID: 0}
+  slowMoTimer: 5
+  slowmo: {fileID: 0}
 --- !u!50 &1209852329
 Rigidbody2D:
   serializedVersion: 4

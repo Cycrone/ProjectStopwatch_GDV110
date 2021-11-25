@@ -27,12 +27,16 @@ public class EnemyBullet : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         target = collision.GetComponent<PlayerMovement>();
+        if (!(collision.gameObject.name.Equals("Enemy")))
+        {
+            Destroy(gameObject);
+        }
+        target = collision.GetComponent<PlayerMovement>();
         if (collision.gameObject.name.Equals ("Player"))
         {
             target.TakeDamage(damage);
-           
         }
-        Destroy(gameObject);
+        
     }
 
 }
